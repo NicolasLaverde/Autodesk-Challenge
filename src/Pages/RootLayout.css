@@ -1,0 +1,9 @@
+.root-app {
+    width: 80%;
+}
+
+  @media (max-width: 768px) {
+    .root-app {
+        width: 100%;
+    }
+  }
