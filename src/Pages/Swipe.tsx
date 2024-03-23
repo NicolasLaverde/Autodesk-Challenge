@@ -1,21 +1,18 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { PlaceCarrousel } from "../components/PlaceCarrousel"
 import { Place } from "../utils/MockData"
-import { MainContext } from "../App";
+import { usePlaceInfoContext } from "../components/PlaceProvider"
 
 type PlaceContext = {
     currentPlace: Place | undefined
-    addPlaceToList: (idPlace: string) => void
-    dislikePlace: () => void
 }
 const PlacesContext = createContext<PlaceContext>({
-    currentPlace: undefined,
-    addPlaceToList: () => {},
-    dislikePlace: () => {}
+    currentPlace: undefined
 })
 
-export function usePlaceContext() {
+export function useCurrentPlaceCtx() {
     const ctx = useContext(PlacesContext)
+    console.log(ctx)
     if(!ctx) {
         throw new Error('You must wrapped your component inside PlaceContext')
     }
@@ -25,29 +22,17 @@ export function usePlaceContext() {
 
 export const SwipeApp = () => {
 
-    const {places, removeAPlace, AddLikedPlace} = useContext(MainContext)
-
+    const {places} = usePlaceInfoContext()
     const [currentPlace, setCurrentPlace] = useState<Place | undefined>(undefined)
-
     
     useEffect(() => {
         if(places.length) {
             setCurrentPlace(places[0])
         }
     }, [places])
-    
-    const addPlaceToList = (idPlace : string): void => {
-        AddLikedPlace(idPlace)
-        removeAPlace()
-    }
 
-    const dislikePlace = () => {
-        removeAPlace()
-    }
-    const placesCtx: PlaceContext = {
-        currentPlace,
-        addPlaceToList,
-        dislikePlace
+    const placesCtx = {
+        currentPlace
     }
 
     return (

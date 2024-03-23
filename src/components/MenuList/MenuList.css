@@ -1,0 +1,27 @@
+.list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    font-size: 2rem;
+    width: 80%;
+    margin: 0 auto;
+}
+  
+.list a {
+    text-decoration: none;
+    color: #fad997;
+}
+  
+.list a:hover,
+.list a.active {
+    color: #fAB833;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .list {
+        font-size: 1rem;
+        justify-content: space-around;
+    }
+}

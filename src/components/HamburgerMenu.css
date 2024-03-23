@@ -1,10 +1,27 @@
 
 .hamburger-menu {
+    position: fixed;
+    top: 2%;
+    left: 1rem;
     display: none;
     cursor: pointer;
     color: white;
     width: 100px;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
   }
+
+  .hamburger-menu:focus {
+    outline: none;
+  }
+
   
   .line {
     width: 30px;
@@ -27,6 +44,6 @@
   
   @media (max-width: 768px) {
     .hamburger-menu {
-      display: block;
+      display: flex;
     }
   }

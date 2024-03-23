@@ -11,12 +11,12 @@ import victoriaFallsImg from '../assets/victoria-falls.jpg'
 import machuPicchuImg from '../assets/machu-picchu.jpg'
 import amazonRiverImg from '../assets/amazon-river.jpg'
 
-type Image = {
+interface Image {
     src: string,
     alt: string
 }
 
-export type Place = {
+export interface Place {
     id: string
     title: string
     image: Image

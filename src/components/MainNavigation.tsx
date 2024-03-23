@@ -1,42 +1,36 @@
-import { NavLink } from "react-router-dom";
-
 import classes from './MainNavigation.module.css'
 import HamburgerMenu from "./HamburgerMenu";
-import { useState } from "react";
+import React, { useState } from "react";
+import { MenuList } from "./MenuList/MenuList";
 
 interface MenuNavigator {
     isMobile: boolean
 }
+
+interface BurgerMenuProps {
+    isOpen: boolean
+}
 const MenuNavigator: React.FC<MenuNavigator> = ({ isMobile }) => (
     <header className={isMobile ? classes.mobile : classes.header}>
         <nav>
-            <ul className={classes.list}>
-                <li>
-                    <NavLink
-                        to="/"
-                        className={({ isActive }) => 
-                        isActive ? classes.active : undefined
-                    }
-                    end
-                    >
-                        Home
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/lovePlaces"
-                        className={({ isActive }) => 
-                        isActive ? classes.active : undefined
-                    }
-                    end
-                    >
-                        Places I Liked
-                    </NavLink>
-                </li>
-            </ul>
+          <MenuList />
         </nav>
     </header>
 )
+
+const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen }) => {
+    return (
+        <nav
+            className={
+                `${classes.mobileNav}
+                    ${isOpen ?
+                    classes.mobilenavopen :
+                    classes.mobilenavclose}
+                `}>
+            <MenuList />
+        </nav>
+    )
+}
 
 
 export default function MainNavigation() {
@@ -45,9 +39,7 @@ export default function MainNavigation() {
         <>
             <MenuNavigator isMobile={false} />
             <HamburgerMenu isOpen={isOpen} toggleMenu={() => setIsOpen(prevProp => !prevProp)} />
-            {isOpen && (
-                <MenuNavigator isMobile/>
-            )}
+            <BurgerMenu isOpen={isOpen} />
         </>
     )
 }

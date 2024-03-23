@@ -1,18 +1,17 @@
-import { usePlaceContext } from "../Pages/Swipe";
+import { useCurrentPlaceCtx } from "../Pages/Swipe";
+import { useActionPlaceContext } from "./PlaceProvider";
 
 export function PlaceCarrousel() {
-    const {
-        currentPlace,
-        addPlaceToList,
-        dislikePlace
-    } = usePlaceContext()
+    const {currentPlace} = useCurrentPlaceCtx()
+
+    const {removeAPlace, AddLikedPlace} = useActionPlaceContext()
     
     return (
         <>
             {currentPlace && (
                 <section className="place-content"> 
                     <div className="place-image">
-                        <button onClick={() => addPlaceToList(currentPlace.id)}>
+                        <button onClick={() => AddLikedPlace(currentPlace.id)}>
                             <img src={currentPlace.image.src} alt={currentPlace.image.alt} />
                             <h3>{currentPlace.title}</h3>
                         </button>
@@ -22,11 +21,11 @@ export function PlaceCarrousel() {
                         <div className="place-buttons">
                             <button 
                                 className="dislike-button"
-                                onClick={dislikePlace}
+                                onClick={() => removeAPlace(currentPlace.id)}
                             />
                             <button
                                 className="like-button"
-                                onClick={() => addPlaceToList(currentPlace.id)}
+                                onClick={() => AddLikedPlace(currentPlace.id)}
                             />
                         </div>   
                     </main>

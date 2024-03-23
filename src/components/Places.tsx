@@ -1,5 +1,5 @@
-import React, { useContext } from "react"
-import { MainContext } from "../App"
+import React from "react"
+import { usePlaceInfoContext } from "./PlaceProvider"
 
 
 interface PlacesProps {
@@ -7,7 +7,7 @@ interface PlacesProps {
 }
 export const Places: React.FC<PlacesProps> = ({fallbackText}) => {
 
-    const {likedPlaces} = useContext(MainContext)
+    const {likedPlaces} = usePlaceInfoContext()
 
     return (
         <section className="places-category">
