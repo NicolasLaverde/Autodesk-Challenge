@@ -1,11 +1,8 @@
 import React from 'react';
 import './HamburgerMenu.css';
+import { HamburgerMenuProps } from '../types/hamburgerMeny';
 
-interface MenuProps {
-  isOpen: boolean
-  toggleMenu: () => void
-}
-const HamburgerMenu: React.FC<MenuProps> = ({ isOpen, toggleMenu }) => {
+const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => {
   return (
     <button className={`hamburger-menu ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
       {isOpen ? (

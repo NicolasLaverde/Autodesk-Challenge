@@ -1,6 +1,4 @@
-/* eslint-disable react-refresh/only-export-components */
-
-import React, { ReactNode, createContext, useContext, useReducer } from 'react'
+import React, { ReactNode, createContext, useReducer } from 'react'
 import { AVAILABLE_PLACES } from '../utils/MockData'
 import {
     ADD_PLACE,
@@ -12,39 +10,20 @@ import {
     REMOVE_PLACE
 } from '../types/PlaceContext'
 
-const PlaceContext = createContext<PlaceContextType>({
+export const PlaceContext = createContext<PlaceContextType>({
     places: [],
     likedPlaces: [],
 })
 
-const ActionsPlaceContext = createContext<ActionPlaceContextType>({
+export const ActionsPlaceContext = createContext<ActionPlaceContextType>({
     removeAPlace: () => {},
     AddLikedPlace: () => {}
 })
-
-export const usePlaceInfoContext = () => {
-    const ctx = useContext(PlaceContext)
-    if (!ctx) {
-        throw new Error('You must wrapped your component inside PlaceContext')
-    }
-
-    return ctx
-}
-
-export const useActionPlaceContext = () => {
-    const ctx = useContext(ActionsPlaceContext)
-    if (!ctx) {
-        throw new Error('You must wrapped your component inside ActionsPlaceContext')
-    }
-
-    return ctx
-}
 
 const defaultState: PlaceState = {
     places: AVAILABLE_PLACES,
     likedPlaces: []
 }
-
 
 function PlacesCartReducer(state: PlaceState, action: PlaceAction): PlaceState {
     switch (action.type) {

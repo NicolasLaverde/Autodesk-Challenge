@@ -1,16 +1,11 @@
 import classes from './MainNavigation.module.css'
-import HamburgerMenu from "./HamburgerMenu";
+import HamburgerMenu from "../HamburgerMenu";
 import React, { useState } from "react";
-import { MenuList } from "./MenuList/MenuList";
+import { MenuList } from "../MenuList/MenuList";
+import { BurgerMenuProps, MenuNavigatorProps } from '../../types/MainNavigation';
 
-interface MenuNavigator {
-    isMobile: boolean
-}
 
-interface BurgerMenuProps {
-    isOpen: boolean
-}
-const MenuNavigator: React.FC<MenuNavigator> = ({ isMobile }) => (
+const MenuNavigator: React.FC<MenuNavigatorProps> = ({ isMobile }) => (
     <header className={isMobile ? classes.mobile : classes.header}>
         <nav>
           <MenuList />

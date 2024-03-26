@@ -26,5 +26,9 @@ export interface PlaceState {
     likedPlaces: Place[]
 }
 
+export interface CurrentPlaceContext {
+    currentPlace: Place | undefined
+}
+
 export const ADD_PLACE = 'ADD_PLACE'
 export const REMOVE_PLACE = 'REMOVE_PLACE'

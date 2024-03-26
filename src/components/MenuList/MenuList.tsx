@@ -1,21 +1,6 @@
 import { NavLink } from "react-router-dom";
 import './MenuList.css'
-
-interface NavLinkInterface {
-    to: string
-    isEnd: boolean
-    title: string
-}
-
-const navLinks: NavLinkInterface[] = [{
-    to: "/autodesk-challenge",
-    isEnd: true,
-    title: 'Home'
-}, {
-    to: 'lovePlaces',
-    isEnd: true,
-    title: 'Places You Liked'
-}]
+import { navLinks } from "../../types/hamburgerMeny";
 
 
 export const MenuList = () =>
