@@ -114,7 +114,7 @@ button:focus-visible {
 
 .place-main{
   width: 100%;
-  margin: 2rem 0;
+  margin: 2rem auto;
 }
 
 .place-main p {
@@ -165,8 +165,8 @@ button:focus-visible {
   }
 
   header h1 {
-    margin: 1rem 0;
-    font-size: 2rem;
+    margin: 1.5rem auto;
+    font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.3rem;
   }
@@ -182,6 +182,16 @@ button:focus-visible {
   }
   .main-content-app {
     width: 100%;
+  }
+  .place-main {
+    width: 95%;
+  }
+  .place-buttons {
+    width: 12rem;
+  }
+  .place-buttons button {
+    width: 80px;
+    height: 80px;
   }
 }
 

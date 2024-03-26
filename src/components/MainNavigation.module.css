@@ -30,7 +30,8 @@
 }
 
 .mobilenavopen {
-    transform: translateX(0)
+    transform: translateX(0);
+    z-index: 10;
 }
 .mobilenavclose {
     transform: translateX(-100%);
