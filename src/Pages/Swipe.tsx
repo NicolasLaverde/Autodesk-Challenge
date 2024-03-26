@@ -1,24 +1,12 @@
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { PlaceCarrousel } from "../components/PlaceCarrousel"
 import { Place } from "../utils/MockData"
-import { usePlaceInfoContext } from "../components/PlaceProvider"
+import { usePlaceInfoContext } from "../Hooks/PlaceContext"
+import { CurrentPlaceContext } from "../types/PlaceContext"
 
-type PlaceContext = {
-    currentPlace: Place | undefined
-}
-const PlacesContext = createContext<PlaceContext>({
+export const CurrentPlace = createContext<CurrentPlaceContext>({
     currentPlace: undefined
 })
-
-export function useCurrentPlaceCtx() {
-    const ctx = useContext(PlacesContext)
-    console.log(ctx)
-    if(!ctx) {
-        throw new Error('You must wrapped your component inside PlaceContext')
-    }
-
-    return ctx
-}
 
 export const SwipeApp = () => {
 
@@ -36,7 +24,7 @@ export const SwipeApp = () => {
     }
 
     return (
-        <PlacesContext.Provider value={placesCtx}>
+        <CurrentPlace.Provider value={placesCtx}>
             <div className="main-content-app">
                 <header>
                     <h1> Match your place </h1>
@@ -49,7 +37,7 @@ export const SwipeApp = () => {
                     
                 </main>
             </div>
-        </PlacesContext.Provider>
+        </CurrentPlace.Provider>
         
     )
 }

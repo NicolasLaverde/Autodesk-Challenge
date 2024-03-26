@@ -1,6 +1,5 @@
 import React from "react"
-import { usePlaceInfoContext } from "./PlaceProvider"
-
+import { usePlaceInfoContext } from "../Hooks/PlaceContext"
 
 interface PlacesProps {
     fallbackText: string

@@ -1,5 +1,4 @@
-import { useCurrentPlaceCtx } from "../Pages/Swipe";
-import { useActionPlaceContext } from "./PlaceProvider";
+import { useActionPlaceContext, useCurrentPlaceCtx } from "../Hooks/PlaceContext";
 
 export function PlaceCarrousel() {
     const {currentPlace} = useCurrentPlaceCtx()

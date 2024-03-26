@@ -185,6 +185,7 @@ button:focus-visible {
   }
   .place-main {
     width: 95%;
+    margin: 0 auto;
   }
   .place-buttons {
     width: 12rem;
