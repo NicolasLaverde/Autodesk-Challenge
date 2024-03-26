@@ -8,11 +8,11 @@ interface NavLinkInterface {
 }
 
 const navLinks: NavLinkInterface[] = [{
-    to: "/",
+    to: "/autodesk-challenge",
     isEnd: true,
     title: 'Home'
 }, {
-    to: '/lovePlaces',
+    to: 'lovePlaces',
     isEnd: true,
     title: 'Places You Liked'
 }]

@@ -8,7 +8,7 @@ import { PlaceProvider } from './components/PlaceProvider'
 function App() {
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: '/autodesk-challenge',
       element: <RootLayout />,
       children: [
         {index: true, element: <SwipeApp />},
