@@ -1,18 +1,19 @@
-import { Places } from '../components/Places';
+import { useTranslation } from 'react-i18next';
+import { LikedPlaces } from '../components/LikedPlaces';
 import './MatchPlacess.css'
 
 export const MatchPlaces = () => {
+    const { t } = useTranslation();
     return (
         <>
          <header>
             <p>
-                Create your personal collection of places you would like to visit or
-                you have visited. Here you can see all the places you already match as liked
+               {t('yourPlaces.title')}
             </p>
         </header>
             <main>
-                <Places
-                    fallbackText={'Select the places you would like to visit in Home Page...'}
+                <LikedPlaces
+                    fallbackText={t('yourPlaces.fallback')}
                 />
             </main>
         </>

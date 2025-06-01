@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { ActionsPlaceContext, PlaceContext } from "../components/PlaceProvider"
-import { CurrentPlace } from "../Pages/Swipe"
+import { CurrentPlace } from "../components/CurrentPlaceProvider"
 
 export function usePlaceInfoContext() {
     const ctx = useContext(PlaceContext)

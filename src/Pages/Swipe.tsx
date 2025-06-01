@@ -1,38 +1,25 @@
-import { createContext, useEffect, useState } from "react"
 import { PlaceCarrousel } from "../components/PlaceCarrousel"
-import { Place } from "../utils/MockData"
 import { usePlaceInfoContext } from "../Hooks/PlaceContext"
-import { CurrentPlaceContext } from "../types/PlaceContext"
-
-export const CurrentPlace = createContext<CurrentPlaceContext>({
-    currentPlace: undefined
-})
+import { CurrentPlace } from "../components/CurrentPlaceProvider"
+import { useCurrentPlaceManager } from "../Hooks/useCurrentPlaceManager"
+import { useTranslation } from 'react-i18next';
 
 export const SwipeApp = () => {
 
     const {places} = usePlaceInfoContext()
-    const [currentPlace, setCurrentPlace] = useState<Place | undefined>(undefined)
-    
-    useEffect(() => {
-        if(places.length) {
-            setCurrentPlace(places[0])
-        }
-    }, [places])
-
-    const placesCtx = {
-        currentPlace
-    }
+    const {currentPlace} = useCurrentPlaceManager(places)
+    const { t } = useTranslation();
 
     return (
-        <CurrentPlace.Provider value={placesCtx}>
+        <CurrentPlace.Provider value={{ currentPlace }}>
             <div className="main-content-app">
                 <header>
-                    <h1> Match your place </h1>
+                    <h1> {t("title")} </h1>
                 </header>
                 <main>
                     {places.length ?
                         <PlaceCarrousel /> : 
-                        <p> There's no more places...</p>
+                        <p>{t("no_places")}</p>
                     }
                     
                 </main>

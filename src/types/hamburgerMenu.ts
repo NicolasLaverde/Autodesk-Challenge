@@ -12,9 +12,9 @@ export interface NavLinkInterface {
 export const navLinks: NavLinkInterface[] = [{
     to: "/autodesk-challenge",
     isEnd: true,
-    title: 'Home'
+    title: 'header.home'
 }, {
     to: 'lovePlaces',
     isEnd: true,
-    title: 'Places You Liked'
+    title: 'header.placesLiked'
 }]

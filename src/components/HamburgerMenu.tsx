@@ -1,6 +1,6 @@
 import React from 'react';
 import './HamburgerMenu.css';
-import { HamburgerMenuProps } from '../types/hamburgerMeny';
+import { HamburgerMenuProps } from '../types/hamburgerMenu';
 
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, toggleMenu }) => {
   return (

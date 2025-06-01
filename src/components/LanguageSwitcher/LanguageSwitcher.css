@@ -1,0 +1,32 @@
+ .wrapper {
+     display: flex;
+     gap: 1rem;
+     justify-content: center;
+     margin: 1rem 0;
+ }
+
+ .lang-button {
+     padding: 0.5rem 1rem;
+     border-radius: 12px;
+     border: 2px solid #ddd;
+     background-color: #f9f9f9;
+     color: #333;
+     font-weight: bold;
+     cursor: pointer;
+     transition: all 0.3s ease;
+ }
+
+ .lang-button:hover:not(:disabled) {
+  background-color: #e8e8e8;
+  border-color: #aaa;
+}
+
+.lang-button:disabled {
+  cursor: not-allowed;
+}
+
+.lang-button.active {
+  background-color: #ddd;
+  border-color: #aaa;
+  color: #888;
+}

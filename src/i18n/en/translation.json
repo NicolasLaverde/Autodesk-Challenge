@@ -1,0 +1,16 @@
+{
+  "title": "Match your place",
+  "no_places": "There's no more places...",
+  "lang": {
+    "en": "English",
+    "es": "Spanish"
+  },
+  "header": {
+    "home": "Home",
+    "placesLiked": "Places You Liked"
+  },
+  "yourPlaces": {
+    "fallback": "Select the places you would like to visit in Home Page...",
+    "title": " Create your personal collection of places you would like to visit or you have visited. Here you can see all the places you already match as liked"
+  }
+}

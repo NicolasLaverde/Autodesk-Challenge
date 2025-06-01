@@ -1,0 +1,16 @@
+{
+  "title": "Encuentra tu lugar",
+  "no_places": "No hay más lugares...",
+  "lang": {
+    "en": "Ingles",
+    "es": "Español"
+  },
+  "header": {
+    "home": "Inicio",
+    "placesLiked": "Tus Lugares"
+  },
+  "yourPlaces": {
+    "fallback": "Ve al la pagina de inicio y seleccioona los lugares que te gustaria visitar...",
+    "title": "Crea tu colección personal de lugares que te gustaría visitar o que ya has visitado. Aquí podrás ver todos los lugares que has marcado como favoritos"
+  }
+}
