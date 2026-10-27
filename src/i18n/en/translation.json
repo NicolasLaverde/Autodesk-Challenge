@@ -12,5 +12,22 @@
   "yourPlaces": {
     "fallback": "Select the places you would like to visit in Home Page...",
     "title": " Create your personal collection of places you would like to visit or you have visited. Here you can see all the places you already match as liked"
+  },
+  "card": {
+    "showDetails": "Show details",
+    "showPhoto": "Show photo"
+  },
+  "search": {
+    "label": "Search your places",
+    "placeholder": "Search by title",
+    "noMatches": "No places match your search"
+  },
+  "liked": {
+    "remove": "Remove",
+    "removeNamed": "Remove {{title}}"
+  },
+  "swipe": {
+    "like": "Like this place",
+    "dislike": "Skip this place"
   }
 }

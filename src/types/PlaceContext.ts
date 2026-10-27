@@ -3,6 +3,7 @@ import { Place } from "../utils/MockData"
 export enum PlaceActions {
     ADD_PLACE = 'ADD_PLACE',
     REMOVE_PLACE = 'REMOVE_PLACE',
+    REMOVE_LIKED_PLACE = 'REMOVE_LIKED_PLACE',
 }
 
 export interface PlaceContextType {
@@ -13,6 +14,7 @@ export interface PlaceContextType {
 export interface ActionPlaceContextType {
     removeAPlace: (idPlace: string) => void
     AddLikedPlace: (idPlace: string) => void
+    RemoveLikedPlace: (idPlace: string) => void
 }
 
 
@@ -32,3 +34,4 @@ export interface CurrentPlaceContext {
 
 export const ADD_PLACE = 'ADD_PLACE'
 export const REMOVE_PLACE = 'REMOVE_PLACE'
+export const REMOVE_LIKED_PLACE = 'REMOVE_LIKED_PLACE'

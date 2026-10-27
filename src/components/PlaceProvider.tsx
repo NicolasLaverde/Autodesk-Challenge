@@ -7,8 +7,12 @@ import {
     PlaceActions,
     PlaceContextType,
     PlaceState,
+    REMOVE_LIKED_PLACE,
     REMOVE_PLACE
 } from '../types/PlaceContext'
+import { createInitialPlaceState } from '../utils/placeState'
+import { getBrowserStorage, readLikedPlaceIds } from '../utils/likedPlacesStorage'
+import { usePersistLikedPlaces } from '../Hooks/usePersistLikedPlaces'
 
 export const PlaceContext = createContext<PlaceContextType>({
     places: [],
@@ -17,13 +21,9 @@ export const PlaceContext = createContext<PlaceContextType>({
 
 export const ActionsPlaceContext = createContext<ActionPlaceContextType>({
     removeAPlace: () => {},
-    AddLikedPlace: () => {}
+    AddLikedPlace: () => {},
+    RemoveLikedPlace: () => {},
 })
-
-const defaultState: PlaceState = {
-    places: AVAILABLE_PLACES,
-    likedPlaces: []
-}
 
 function PlacesCartReducer(state: PlaceState, action: PlaceAction): PlaceState {
     switch (action.type) {
@@ -46,6 +46,19 @@ function PlacesCartReducer(state: PlaceState, action: PlaceAction): PlaceState {
                 places: state.places.filter(place => place.id !== idPlace)
             }
         }
+        case REMOVE_LIKED_PLACE: {
+            const idPlace = action.payload
+            const removedPlace = state.likedPlaces.find(place => place.id === idPlace)
+            if (!removedPlace) {
+                return state
+            }
+            // The removed place goes back to the front of the deck so it is the next card shown.
+            return {
+                ...state,
+                likedPlaces: state.likedPlaces.filter(place => place.id !== idPlace),
+                places: [removedPlace, ...state.places.filter(place => place.id !== idPlace)]
+            }
+        }
         default: {
             return state
         }
@@ -53,7 +66,11 @@ function PlacesCartReducer(state: PlaceState, action: PlaceAction): PlaceState {
 }
 
 export const PlaceProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [state, dispatch] = useReducer(PlacesCartReducer, defaultState)
+    const [state, dispatch] = useReducer(PlacesCartReducer, undefined, () =>
+        createInitialPlaceState(readLikedPlaceIds(getBrowserStorage()))
+    )
+
+    usePersistLikedPlaces(state.likedPlaces)
 
     const removeAPlace = (idPlace: string): void => {
         dispatch({
@@ -69,6 +86,13 @@ export const PlaceProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         })
     }
 
+    const RemoveLikedPlace = (idPlace: string): void => {
+        dispatch({
+            type: PlaceActions.REMOVE_LIKED_PLACE,
+            payload: idPlace
+        })
+    }
+
 
     const placeCtxvalue: PlaceContextType = {
         places: state.places,
@@ -77,7 +101,8 @@ export const PlaceProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     const actionCtxValue: ActionPlaceContextType = {
         AddLikedPlace,
-        removeAPlace
+        removeAPlace,
+        RemoveLikedPlace,
     }
 
     return (
